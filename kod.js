@@ -47,7 +47,7 @@ let ballY2 = 75;
 let speedballX2 = 1;                              //Math.floor(Math.random() * (-1 - 1));
 let speedballY2 = 1;
 
-const velocity = 20;
+const velocity = 10;
 
 let heartAll = 3;
 let heartSize1 = 40;
@@ -66,6 +66,10 @@ let score = 0;
         ctx.drawImage(heart1,100,20,heartSize1,heartSize1);
         ctx.drawImage(heart2,150,20,heartSize2,heartSize2);
         ctx.drawImage(heart3,200,20,heartSize3,heartSize3);
+
+        ctx.fillStyle = 'white';
+        ctx.font = "Italic 50px Dark Souls Font"
+        ctx.fillText(score, 930,60)
 
     }
     function ball(){
@@ -137,24 +141,25 @@ let score = 0;
     function Hero(){
         ctx.fillStyle = "red";
         ctx.drawImage(Herop,HeroX, HeroY, HeroW, HeroH);  
-          window.addEventListener("keydown", move);
+          window.addEventListener("keypress", move);
+          window.addEventListener("keydown", move1);
     }
       function dmg(){
         if(HeroY <= 50){ //Przekroczenie granicy map przez Postać 
          heartAll -= 1;
-         HeroY = 75;
+         HeroY = 100;
         }
         if(HeroY + HeroSize >= 590){
           heartAll -= 1;
-          HeroY = 550;
+          HeroY = 490;
         }
         if(HeroX <= 50){
           heartAll -= 1;
-          HeroX = 75;
+          HeroX = 100;
         }
         if(HeroX + HeroSize >= 973){
           heartAll -= 1;
-          HeroX =948;
+          HeroX =873;
         }else{};
 
         if(heartAll == 2){
@@ -187,6 +192,26 @@ let score = 0;
       //console.log(HeroY);
       //37 to klawisz strzałki w lewo
       switch (e.keyCode) {
+        case 97:
+          HeroX -= velocity;
+          break;
+        case 119:
+          HeroY -= velocity;
+          break;
+        case 100:
+          HeroX += velocity;
+          break;
+        case 115:
+          HeroY += velocity;
+          break;
+      }
+    }
+    const move1 = (e) => {
+      //console.log(e.keyCode)
+      //console.log(HeroX);
+      //console.log(HeroY);
+      //37 to klawisz strzałki w lewo
+      switch (e.keyCode) {
         case 37:
           HeroX -= velocity;
           break;
@@ -209,7 +234,19 @@ let score = 0;
 
     console.log(score);
 
- 
+
+    function start(){
+      ctx.drawImage(Mid,0,0,cw,ch);
+      ctx.fillStyle = 'white';
+      ctx.font = "Normal 200px Dark Souls Font";
+      ctx.fillText("Skull",260,200);
+    }
+
+
+
+
+
+    function silnikpo(){
     function game(){
     tlo();
     map();
@@ -221,9 +258,9 @@ let score = 0;
     setInterval(game, 1000 / 60);
     setInterval(scoreP, 1000);
     
+  }
 
-
-  
+    setInterval(start, 1000/60);
 
 
 
