@@ -101,7 +101,7 @@ let score = 0;
             speedUp();
         }
         if((ballX <= HeroX + HeroH)&& (ballY + ballsize / 2 >= HeroY) && (ballY + ballsize / 2 <= HeroY + HeroH) && (ballX >= HeroX)){
-           End();
+          heartAll -= 3;
         }
     }
     function spawnball(){
@@ -184,14 +184,13 @@ let score = 0;
         
         if(heartAll == 0){
           heartSize1 = 0;
-          End();
         }
       }
       function ball2(){
         if(speedballX == 8 || speedballX == -8 || speedballY == 8 || speedballY == -8){
           spawnball();
           if((ballX2 <= HeroX + HeroH) && (ballY2 + ballsize2 / 2 >= HeroY) && (ballY2 + ballsize2 / 2 <= HeroY + HeroH) && (ballX2 >= HeroX)){
-            End();
+            heartAll -= 3;
           }
         }
       };
@@ -383,18 +382,22 @@ let score = 0;
     ball();
     ball2();
     dmg();
-    if(heartAll == 0 || heartSize1 == 0){
+    if(heartAll <= 0){
+    
     clearInterval(Int1);
-      clearInterval(Int2);
+    clearInterval(Int2);
+    End();
     }
     };
     let Int1 = setInterval(game,1000/60);
     let Int2 = setInterval(scoreP, 1000);
-    
+    }
 
 
-
-  }
+    tryA.addEventListener("click", function(){
+      window.location.reload(true);
+      
+    })
   window.addEventListener("load",start);
 
  
