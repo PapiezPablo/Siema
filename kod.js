@@ -245,7 +245,6 @@ let score = 0;
 
     function start(){
       ctx.drawImage(Mid,0,0,cw,ch);
-
       ctx.drawImage(tron,310,300,100,100);
       ctx.drawImage(tron,460,300,100,100);
       ctx.drawImage(tron,610,300,100,100);
@@ -368,7 +367,7 @@ let score = 0;
         clearInterval(Int1);
         clearInterval(Int2);
 
-        tryA.addEventListener("click", function(){
+        window.addEventListener("onclick", function(){
           window.location.reload(true);
           
         })
@@ -382,7 +381,7 @@ let score = 0;
     ball();
     ball2();
     dmg();
-    if(heartAll <= 0){
+    if(heartAll <= -1){
     
     clearInterval(Int1);
     clearInterval(Int2);
@@ -394,11 +393,7 @@ let score = 0;
     }
 
 
-    tryA.addEventListener("click", function(){
-      window.location.reload(true);
-      
-    })
-  window.addEventListener("load",start);
+  window.addEventListener("load",silnikpo);
 
  
 
