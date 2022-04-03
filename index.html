@@ -20,13 +20,51 @@
             border: 10px solid purple;
             
         }
-        @font-face {
-        font-family: 'Dark Souls Font';
-        src: url(./Dark-Soul/OptimusPrincepsSemiBold.ttf);
-}
+        #door{
+            position: absolute;
+            height: 120px;
+            width: 80px;
+            top: 470px;
+            left: 635px;
+            visibility: hidden;
+        }
+        #skull1{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 503px;
+            top: 340px;
+        }
+        #skull2{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 653px;
+            top: 340px;
+        }
+        #skull3{
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            left: 803px;
+            top: 340px;
+        }
+        #tryA{
+            position: absolute;
+            width: 150px;
+            height: 30px;
+            left: 608px;
+            top: 400px;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
+    <img src="./IMG/door.png" id="door">
+    <img src="./IMG/skull.png" id="skull1">
+    <img src="./IMG/skull2.png" id="skull2">
+    <img src="./IMG/skull3.png" id="skull3">
+    <img src="./IMG/try.png" id="tryA">
     <canvas></canvas>
     <script src="kod.js"></script>
 </body>

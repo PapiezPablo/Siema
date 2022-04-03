@@ -1,6 +1,7 @@
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+
 const Up = new Image();
 const Left = new Image();
 const Right = new Image();
@@ -11,6 +12,13 @@ const Herop = new Image();
 const heart1 = new Image();
 const heart2 = new Image();
 const heart3 = new Image();
+const skull1 = document.getElementById("skull1");
+const skull2 = document.getElementById("skull2");
+const skull3 = document.getElementById("skull3");
+const tron = new Image();
+const door = document.getElementById("door");
+const wallEnd = new Image();
+const tryA = document.getElementById("tryA");
 Up.src = "./IMG/gora.png";
 Left.src = "./IMG/lewo.png";
 Right.src = "./IMG/prawo.png";
@@ -21,6 +29,8 @@ Herop.src= "./IMG/skull.png";
 heart1.src="./IMG/skull.png";
 heart2.src="./IMG/skull.png";
 heart3.src="./IMG/skull.png";
+tron.src="./IMG/tron.png";
+wallEnd.src ="./IMG/wall.jpg";
 
 
 canvas.width = 1024;
@@ -55,6 +65,8 @@ let heartSize2 = 40;
 let heartSize3 = 40;
 
 let score = 0;
+
+
     function tlo(){
         ctx.drawImage(Mid,50,50,925,540);
     }
@@ -68,7 +80,7 @@ let score = 0;
         ctx.drawImage(heart3,200,20,heartSize3,heartSize3);
 
         ctx.fillStyle = 'white';
-        ctx.font = "Italic 50px Dark Souls Font"
+        ctx.font = "Italic 50px Times New Roman"
         ctx.fillText(score, 930,60)
 
     }
@@ -89,7 +101,7 @@ let score = 0;
             speedUp();
         }
         if((ballX <= HeroX + HeroH)&& (ballY + ballsize / 2 >= HeroY) && (ballY + ballsize / 2 <= HeroY + HeroH) && (ballX >= HeroX)){
-          window.location.reload(true);
+           End();
         }
     }
     function spawnball(){
@@ -172,15 +184,14 @@ let score = 0;
         
         if(heartAll == 0){
           heartSize1 = 0;
-          window.location.reload(true);
-
+          End();
         }
       }
       function ball2(){
         if(speedballX == 8 || speedballX == -8 || speedballY == 8 || speedballY == -8){
           spawnball();
           if((ballX2 <= HeroX + HeroH) && (ballY2 + ballsize2 / 2 >= HeroY) && (ballY2 + ballsize2 / 2 <= HeroY + HeroH) && (ballX2 >= HeroX)){
-            window.location.reload(true);
+            End();
           }
         }
       };
@@ -232,19 +243,137 @@ let score = 0;
     }
   
 
-    console.log(score);
-
 
     function start(){
       ctx.drawImage(Mid,0,0,cw,ch);
+
+      ctx.drawImage(tron,310,300,100,100);
+      ctx.drawImage(tron,460,300,100,100);
+      ctx.drawImage(tron,610,300,100,100);
+
       ctx.fillStyle = 'white';
-      ctx.font = "Normal 200px Dark Souls Font";
-      ctx.fillText("Skull",260,200);
+      ctx.font = "Normal 220px Times New Roman";
+      ctx.fillText(Tskull,Tskull1,Tskull2);
+
+      ctx.font = "Normal 40px Times New Roman";
+      ctx.fillText(Tplay,Tplay1,Tplay2);
+      
+      
+
+      door.addEventListener("mouseover", function() {
+        door.style.width = '120px'
+        door.style.height = '180px'
+        door.style.top = '445px';
+        door.style.left = '610px';
+      });
+      door.addEventListener("mouseout", function() {
+        door.style.width = '80px'
+        door.style.height = '120px'
+        door.style.top = '470px';
+        door.style.left = '635px';
+    });
+      door.addEventListener("click", silnikpo);
+      door.addEventListener("click", function(){
+        Tskull1 = 0;
+        Tskull2 = 0;
+        Tplay1 = 0;
+        Tplay2 = 0;
+        Tskull = "";
+        Tplay = "";
+        door.style.visibility = "hidden";
+        skull1.style.visibility = "hidden";
+        skull2.style.visibility = "hidden";
+        skull3.style.visibility = "hidden";
+      });
+
+
+        //skull1
+      skull1.addEventListener("mouseover", function() {
+        skull1.style.width = '100px'
+        skull1.style.height = '100px'
+        skull1.style.top = '315px';
+        skull1.style.left = '478px';
+      });
+      skull1.addEventListener("mouseout", function() {
+        skull1.style.width = '50px'
+        skull1.style.height = '50px'
+        skull1.style.top = '340px';
+        skull1.style.left = '503px';
+    });
+      skull1.addEventListener("click", function(){
+        Herop.src = "./IMG/skull.png"
+        skull1.style.visibility = "hidden";
+        skull2.style.visibility = "visible";
+        skull3.style.visibility = "visible";
+        door.style.visibility = "visible";
+      })
+
+      //skull2
+      skull2.addEventListener("mouseover", function() {
+        skull2.style.width = '100px'
+        skull2.style.height = '100px'
+        skull2.style.top = '315px';
+        skull2.style.left = '628px';
+      });
+      skull2.addEventListener("mouseout", function() {
+        skull2.style.width = '50px'
+        skull2.style.height = '50px'
+        skull2.style.top = '340px';
+        skull2.style.left = '653px';
+    });
+      skull2.addEventListener("click", function(){
+        Herop.src = "./IMG/skull2.png"
+        skull1.style.visibility = "visible";
+        skull2.style.visibility = "hidden";
+        skull3.style.visibility = "visible";
+        door.style.visibility = "visible";
+      })
+      //skull3
+      skull3.addEventListener("mouseover", function() {
+        skull3.style.width = '100px'
+        skull3.style.height = '100px'
+        skull3.style.top = '315px';
+        skull3.style.left = '778px';
+      });
+      skull3.addEventListener("mouseout", function() {
+        skull3.style.width = '50px'
+        skull3.style.height = '50px'
+        skull3.style.top = '340px';
+        skull3.style.left = '803px';
+    });
+      skull3.addEventListener("click", function(){
+        Herop.src = "./IMG/skull3.png"
+        skull1.style.visibility = "visible";
+        skull2.style.visibility = "visible";
+        skull3.style.visibility = "hidden";
+        door.style.visibility = "visible";
+      })
+
+
     }
+    let Tskull1 = 290;
+    let Tskull2 = 200;
+    let Tplay1 = 470;
+    let Tplay2 = 620;
+    let Tskull = "Skull";
+    let Tplay = "Play";
+
+  
 
 
+      function End(){
+        ctx.drawImage(wallEnd,cw/2 - 120,ch/2 - 120,240,240);
+        ctx.font = "Normal 70px Times New Roman";
+        ctx.fillText(score,495,380);
+        tryA.style.visibility = "visible";
+        clearInterval(Int1);
+        clearInterval(Int2);
 
-
+        tryA.addEventListener("click", function(){
+          window.location.reload(true);
+          
+        })
+      }
 
     function silnikpo(){
     function game(){
@@ -254,13 +383,19 @@ let score = 0;
     ball();
     ball2();
     dmg();
+    if(heartAll == 0 || heartSize1 == 0){
+    clearInterval(Int1);
+      clearInterval(Int2);
+    }
     };
-    setInterval(game, 1000 / 60);
-    setInterval(scoreP, 1000);
+    let Int1 = setInterval(game,1000/60);
+    let Int2 = setInterval(scoreP, 1000);
     
+
+
+
   }
+  window.addEventListener("load",start);
 
-    setInterval(start, 1000/60);
-
-
+ 
 
