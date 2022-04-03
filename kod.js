@@ -101,7 +101,7 @@ let score = 0;
             speedUp();
         }
         if((ballX <= HeroX + HeroH)&& (ballY + ballsize / 2 >= HeroY) && (ballY + ballsize / 2 <= HeroY + HeroH) && (ballX >= HeroX)){
-          heartAll -= 3;
+          heartAll = -1;
         }
     }
     function spawnball(){
@@ -123,30 +123,30 @@ let score = 0;
   }
     
     function speedUp(){
-        if(speedballX > 0 && speedballX < 8){
+        if(speedballX > 0 && speedballX < 16){
           speedballX += 0.5;
         }
-        if(speedballX < 0 && speedballX > -8){
+        if(speedballX < 0 && speedballX > -16){
           speedballX -= 0.5;
         }
-        if(speedballY > 0 && speedballY < 8){
+        if(speedballY > 0 && speedballY < 16){
           speedballY += 0.5;
         }
-        if(speedballY < 0 && speedballY > -8){
+        if(speedballY < 0 && speedballY > -16){
           speedballY -= 0.5;
         }
     }
     function speedUp2(){
-      if(speedballX2 > 0 && speedballX2 < 8){
+      if(speedballX2 > 0 && speedballX2 < 16){
         speedballX2 += 0.5;
       }
-      if(speedballX2 < 0 && speedballX2 > -8){
+      if(speedballX2 < 0 && speedballX2 > -16){
         speedballX2 -= 0.5;
       }
-      if(speedballY2 > 0 && speedballY2 < 8){
+      if(speedballY2 > 0 && speedballY2 < 16){
         speedballY2 += 0.5;
       }
-      if(speedballY2 < 0 && speedballY2 > -8){
+      if(speedballY2 < 0 && speedballY2 > -16){
         speedballY2 -= 0.5;
       }
   }
@@ -187,10 +187,10 @@ let score = 0;
         }
       }
       function ball2(){
-        if(speedballX == 8 || speedballX == -8 || speedballY == 8 || speedballY == -8){
+        if(score >= 50){
           spawnball();
           if((ballX2 <= HeroX + HeroH) && (ballY2 + ballsize2 / 2 >= HeroY) && (ballY2 + ballsize2 / 2 <= HeroY + HeroH) && (ballX2 >= HeroX)){
-            heartAll -= 3;
+            heartAll = -1;
           }
         }
       };
@@ -360,15 +360,17 @@ let score = 0;
 
 
       function End(){
+        let sx = 495;
+        let sy = 380;
         ctx.drawImage(wallEnd,cw/2 - 120,ch/2 - 120,240,240);
         ctx.font = "Normal 70px Times New Roman";
-        ctx.fillText(score,495,380);
-        tryA.style.visibility = "visible";
-        clearInterval(Int1);
-        clearInterval(Int2);
+        ctx.fillText(score,sx,sy);
 
-        window.addEventListener("onclick", function(){
+        tryA.style.visibility = "visible";
+
+        tryA.addEventListener("click", function(){
           window.location.reload(true);
+          console.log('siema');
           
         })
       }
