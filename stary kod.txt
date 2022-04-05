@@ -1,0 +1,100 @@
+door.addEventListener("mouseover", function() {
+        door.style.width = '120px'
+        door.style.height = '180px'
+        door.style.top = '445px';
+        door.style.left = '610px';
+      });
+      door.addEventListener("mouseout", function() {
+        door.style.width = '80px'
+        door.style.height = '120px'
+        door.style.top = '470px';
+        door.style.left = '635px';
+    });
+      door.addEventListener("click", silnikpo);
+      door.addEventListener("click", function(){
+        Tskull1 = 0;
+        Tskull2 = 0;
+        Tplay1 = 0;
+        Tplay2 = 0;
+        Tskull = "";
+        Tplay = "";
+        door.style.visibility = "hidden";
+        skull1.style.visibility = "hidden";
+        skull2.style.visibility = "hidden";
+        skull3.style.visibility = "hidden";
+      });
+
+
+        //skull1
+      skull1.addEventListener("mouseover", function() {
+        skull1.style.width = '100px'
+        skull1.style.height = '100px'
+        skull1.style.top = '315px';
+        skull1.style.left = '478px';
+      });
+      skull1.addEventListener("mouseout", function() {
+        skull1.style.width = '50px'
+        skull1.style.height = '50px'
+        skull1.style.top = '340px';
+        skull1.style.left = '503px';
+    });
+      skull1.addEventListener("click", function(){
+        Herop.src = "./IMG/skull.png"
+        skull1.style.visibility = "hidden";
+        skull2.style.visibility = "visible";
+        skull3.style.visibility = "visible";
+        door.style.visibility = "visible";
+      })
+
+      //skull2
+      skull2.addEventListener("mouseover", function() {
+        skull2.style.width = '100px'
+        skull2.style.height = '100px'
+        skull2.style.top = '315px';
+        skull2.style.left = '628px';
+      });
+      skull2.addEventListener("mouseout", function() {
+        skull2.style.width = '50px'
+        skull2.style.height = '50px'
+        skull2.style.top = '340px';
+        skull2.style.left = '653px';
+    });
+      skull2.addEventListener("click", function(){
+        Herop.src = "./IMG/skull2.png"
+        skull1.style.visibility = "visible";
+        skull2.style.visibility = "hidden";
+        skull3.style.visibility = "visible";
+        door.style.visibility = "visible";
+      })
+      //skull3
+      skull3.addEventListener("mouseover", function() {
+        skull3.style.width = '100px'
+        skull3.style.height = '100px'
+        skull3.style.top = '315px';
+        skull3.style.left = '778px';
+      });
+      skull3.addEventListener("mouseout", function() {
+        skull3.style.width = '50px'
+        skull3.style.height = '50px'
+        skull3.style.top = '340px';
+        skull3.style.left = '803px';
+    });
+      skull3.addEventListener("click", function(){
+        Herop.src = "./IMG/skull3.png"
+        skull1.style.visibility = "visible";
+        skull2.style.visibility = "visible";
+        skull3.style.visibility = "hidden";
+        door.style.visibility = "visible";
+      })
+
+
+
+   ctx.fillStyle = 'white';
+      ctx.font = "Normal 220px Times New Roman";
+      //ctx.fillText(Tskull,280,200);
+
+      ctx.font = "Normal 60px Times New Roman";
+      //ctx.fillText(TEnter,290,590);
+
+      ctx.font = "Normal 60px Times New Roman";
+      //ctx.fillText(TSelect,200,300);

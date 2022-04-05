@@ -12,13 +12,12 @@ const Herop = new Image();
 const heart1 = new Image();
 const heart2 = new Image();
 const heart3 = new Image();
-const skull1 = document.getElementById("skull1");
-const skull2 = document.getElementById("skull2");
-const skull3 = document.getElementById("skull3");
+const skull1 = new Image();
+const skull2 = new Image();
+const skull3 = new Image();
 const tron = new Image();
-const door = document.getElementById("door");
 const wallEnd = new Image();
-const tryA = document.getElementById("tryA");
+const wallStart = new Image();
 Up.src = "./IMG/gora.png";
 Left.src = "./IMG/lewo.png";
 Right.src = "./IMG/prawo.png";
@@ -29,8 +28,12 @@ Herop.src= "./IMG/skull.png";
 heart1.src="./IMG/skull.png";
 heart2.src="./IMG/skull.png";
 heart3.src="./IMG/skull.png";
+skull1.src = "./IMG/skull.png";
+skull2.src = "./IMG/skull2.png";
+skull3.src = "./IMG/skull3.png";
 tron.src="./IMG/tron.png";
-wallEnd.src ="./IMG/wall.jpg";
+wallEnd.src ="./IMG/wall1.jpg";
+wallStart.src ="./IMG/start.jpg";
 
 
 canvas.width = 1024;
@@ -244,135 +247,91 @@ let score = 0;
 
 
     function start(){
-      ctx.drawImage(Mid,0,0,cw,ch);
-      ctx.drawImage(tron,310,300,100,100);
-      ctx.drawImage(tron,460,300,100,100);
-      ctx.drawImage(tron,610,300,100,100);
+      ctx.drawImage(wallStart,0,0,cw,ch);
+      ctx.drawImage(tron,300,310,120,120);
+      ctx.drawImage(tron,450,310,120,120);
+      ctx.drawImage(tron,600,310,120,120);
 
-      ctx.fillStyle = 'white';
-      ctx.font = "Normal 220px Times New Roman";
-      ctx.fillText(Tskull,Tskull1,Tskull2);
+      ctx.drawImage(skull1,330,340,skull1S,skull1S);
+      ctx.drawImage(skull2,480,340,skull2S,skull2S);
+      ctx.drawImage(skull3,630,340,skull3S,skull3S);
 
-      ctx.font = "Normal 40px Times New Roman";
-      ctx.fillText(Tplay,Tplay1,Tplay2);
-      
       
 
-      door.addEventListener("mouseover", function() {
-        door.style.width = '120px'
-        door.style.height = '180px'
-        door.style.top = '445px';
-        door.style.left = '610px';
-      });
-      door.addEventListener("mouseout", function() {
-        door.style.width = '80px'
-        door.style.height = '120px'
-        door.style.top = '470px';
-        door.style.left = '635px';
-    });
-      door.addEventListener("click", silnikpo);
-      door.addEventListener("click", function(){
-        Tskull1 = 0;
-        Tskull2 = 0;
-        Tplay1 = 0;
-        Tplay2 = 0;
-        Tskull = "";
-        Tplay = "";
-        door.style.visibility = "hidden";
-        skull1.style.visibility = "hidden";
-        skull2.style.visibility = "hidden";
-        skull3.style.visibility = "hidden";
-      });
-
-
-        //skull1
-      skull1.addEventListener("mouseover", function() {
-        skull1.style.width = '100px'
-        skull1.style.height = '100px'
-        skull1.style.top = '315px';
-        skull1.style.left = '478px';
-      });
-      skull1.addEventListener("mouseout", function() {
-        skull1.style.width = '50px'
-        skull1.style.height = '50px'
-        skull1.style.top = '340px';
-        skull1.style.left = '503px';
-    });
-      skull1.addEventListener("click", function(){
-        Herop.src = "./IMG/skull.png"
-        skull1.style.visibility = "hidden";
-        skull2.style.visibility = "visible";
-        skull3.style.visibility = "visible";
-        door.style.visibility = "visible";
-      })
-
-      //skull2
-      skull2.addEventListener("mouseover", function() {
-        skull2.style.width = '100px'
-        skull2.style.height = '100px'
-        skull2.style.top = '315px';
-        skull2.style.left = '628px';
-      });
-      skull2.addEventListener("mouseout", function() {
-        skull2.style.width = '50px'
-        skull2.style.height = '50px'
-        skull2.style.top = '340px';
-        skull2.style.left = '653px';
-    });
-      skull2.addEventListener("click", function(){
-        Herop.src = "./IMG/skull2.png"
-        skull1.style.visibility = "visible";
-        skull2.style.visibility = "hidden";
-        skull3.style.visibility = "visible";
-        door.style.visibility = "visible";
-      })
-      //skull3
-      skull3.addEventListener("mouseover", function() {
-        skull3.style.width = '100px'
-        skull3.style.height = '100px'
-        skull3.style.top = '315px';
-        skull3.style.left = '778px';
-      });
-      skull3.addEventListener("mouseout", function() {
-        skull3.style.width = '50px'
-        skull3.style.height = '50px'
-        skull3.style.top = '340px';
-        skull3.style.left = '803px';
-    });
-      skull3.addEventListener("click", function(){
-        Herop.src = "./IMG/skull3.png"
-        skull1.style.visibility = "visible";
-        skull2.style.visibility = "visible";
-        skull3.style.visibility = "hidden";
-        door.style.visibility = "visible";
-      })
-
-
+      window.addEventListener("keypress", moveS);
     }
-    let Tskull1 = 290;
-    let Tskull2 = 200;
-    let Tplay1 = 470;
-    let Tplay2 = 620;
-    let Tskull = "Skull";
-    let Tplay = "Play";
 
-  
 
+    const moveS = (e) => {
+      console.log(e.keyCode)
+      //console.log(HeroX);
+      //console.log(HeroY);
+      //37 to klawisz strzałki w lewo
+      switch (e.keyCode) {
+        case 49:
+          if(selectH == false){
+          skull1S = 0;
+          skull2S = 60;
+          skull3S = 60;
+          Herop.src = './IMG/skull.png';
+          on = true;
+          }
+          break;
+        case 50:
+          if(selectH == false){
+          skull1S = 60;
+          skull2S = 0;
+          skull3S = 60;
+          Herop.src = './IMG/skull2.png';
+          on = true;
+          }
+          break;
+        case 51:
+          if(selectH == false){
+          skull1S = 60;
+          skull2S = 60;
+          skull3S = 0;
+          Herop.src = './IMG/skull3.png';
+          on = true;
+          }
+          break;
+        case 13:
+          if(on == true){
+          silnikpo();
+          clearInterval(Int3);
+          selectH = true;
+          }
+          break;
+        case 32:
+          if(blockS == true){
+          window.location.reload(true);
+          }
+      }
+    }
+
+      let skull1S = 60;
+      let skull2S = 60;
+      let skull3S = 60;
+
+      let on = false;                  //wylacz enter
+      let selectH = false;            //wybierz postac
+      let blockS = false;            //blok dla spacji
 
       function End(){
-        let sx = 495;
+        let sx = 485;
         let sy = 380;
         ctx.drawImage(wallEnd,cw/2 - 120,ch/2 - 120,240,240);
+        ctx.fillStyle = 'red';
         ctx.font = "Normal 70px Times New Roman";
         ctx.fillText(score,sx,sy);
 
-        tryA.style.visibility = "visible";
+        if(score >= 10){
+          sx = 485;
+        }
 
-        tryA.addEventListener("click", function(){
-          window.location.reload(true);
-          console.log('siema');
-          
-        })
+        
+
+        
       }
 
     function silnikpo(){
@@ -387,15 +346,18 @@ let score = 0;
     
     clearInterval(Int1);
     clearInterval(Int2);
-    End();
+    setInterval(End, 1000/60);
+    blockS = true;
     }
+    on = false;
     };
     let Int1 = setInterval(game,1000/60);
     let Int2 = setInterval(scoreP, 1000);
     }
 
 
-  window.addEventListener("load",silnikpo);
+  window.addEventListener("load",start);
+  let Int3 = setInterval(start, 1000/60);
 
  
 
