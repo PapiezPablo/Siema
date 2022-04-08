@@ -41,6 +41,14 @@ canvas.height = 640;
 const cw = canvas.width;
 const ch = canvas.height;
 
+let los = Math.floor(Math.random()*(1 - (-1)));
+if(los === 0){
+  los = -1;
+}
+let los2 = Math.floor(Math.random()*(1 - (-1)));
+if(los2 === 0){
+  los2 = -1;
+}
 
 const HeroSize = 30;
 let HeroX = 100;
@@ -51,14 +59,14 @@ let HeroH = 30;
 const ballsize = 20;
 let ballX = cw/2;
 let ballY = 75;
-let speedballX = -1;                              //Math.floor(Math.random() * (-1 - 1));
-let speedballY = 1;
+let speedballX = los;                              //Math.floor(Math.random() * (1 - (-1)) + (-1));
+let speedballY = los2;
 
 const ballsize2 = 20;
 let ballX2 = cw/2;
 let ballY2 = 75;
-let speedballX2 = 1;                              //Math.floor(Math.random() * (-1 - 1));
-let speedballY2 = 1;
+let speedballX2 = los;                              //Math.floor(Math.random() * (-1 - 1));
+let speedballY2 = los2;
 
 const velocity = 10;
 
@@ -68,6 +76,9 @@ let heartSize2 = 40;
 let heartSize3 = 40;
 
 let score = 0;
+
+
+console.log(los);
 
 
     function tlo(){
@@ -263,7 +274,7 @@ let score = 0;
 
 
     const moveS = (e) => {
-      console.log(e.keyCode)
+      //console.log(e.keyCode)
       //console.log(HeroX);
       //console.log(HeroY);
       //37 to klawisz strzałki w lewo
